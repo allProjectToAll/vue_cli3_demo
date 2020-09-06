@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <style type="text/css">
+    /* body{display:flex;} */
+    .contain{
+      display:flex;
+      width:300px;
+      height:100px;
+      background:#ccc;
+      margin-right:20px;
+    }
+    .child1{width:100px;background:blue;height:30px;margin-right:20px;}
+
+    .contain2{justify-content:center;}
+    .child2{width:50px;background:blue;height:30px;border:1px solid red;}
+
+    .contain3{justify-content:space-between;}
+
+    .contain4{justify-content:space-around;}
+
+    .contain5{justify-content:space-evenly;}
+
+    .contain6{align-items:center;}
+
+    .contain7{align-content:center;flex-wrap:wrap}/* .先换行，再多行居中 */
+
+    .contain8{align-content:space-around;flex-wrap:wrap}/* .先换行，再多行居中 */
+
+    .contain10{flex-direction:column;height:200px;}
+
+    .contain11{width:100%;display:flex;background:#ccc;height:200px;}
+    .child3{width:200px;}
+    .child4{width:400px;}
+    .child5{}
+
+
+
+    .color{background:blue;border:1px solid red;}
+    </style>
+    <title>loveRandy</title>
+  </head>
+  <body>
+    1.display:flex;表示横向排布，默认不换行，即使子是设置了宽度，宽度也会变小，以便于在一行展示。
+    父加：flex-wrap:nowrap不换行，wrap换行，
+    <div class="contain">
+      <div class="child1"></div>
+      <div class="child1"></div>
+      <div class="child1"></div>
+      <div class="child1"></div>
+      <div class="child1"></div>
+    </div>
+    2.justify-content:center;居中显示
+    <div class="contain contain2">
+      <div class="child2"></div>
+      <div class="child2"></div>
+      <div class="child2"></div>
+    </div>
+    3.justify-content:space-between;居中显示,左右没有空隙
+    <div class="contain contain3">
+      <div class="child2"></div>
+      <div class="child2"></div>
+      <div class="child2"></div>
+    </div>
+    4.justify-content:space-around;左右有空隙，空隙为中间空隙一半
+    <div class="contain contain4">
+      <div class="child2"></div>
+      <div class="child2"></div>
+      <div class="child2"></div>
+    </div>
+    5.justify-content:space-evenly;左右有空隙，空隙与中间空隙相同
+    <div class="contain contain5">
+      <div class="child2"></div>
+      <div class="child2"></div>
+      <div class="child2"></div>
+    </div>
+    6.align-items:center上下居中
+    <div class="contain contain6">
+      <div class="child2"></div>
+      <div class="child2"></div>
+      <div class="child2"></div>
+    </div>
+    7.align-content:center;多行上下居中
+    <div class="contain contain7">
+      <div class="child2"></div>
+      <div class="child2"></div>
+      <div class="child2"></div>
+      <div class="child2"></div>
+      <div class="child2"></div>
+      <div class="child2"></div>
+    </div>
+    8.align-content:space-around;上下空隙小一半，align-content:space-evenly上中下空隙相同，align-content:space-between上下没有空隙
+    <div class="contain contain8">
+      <div class="child2"></div>
+      <div class="child2"></div>
+      <div class="child2"></div>
+      <div class="child2"></div>
+      <div class="child2"></div>
+      <div class="child2"></div>
+    </div>
+    9.子集：flex-grow:1;自适应宽度，满屏显示,0为自己设置的宽度
+    <div class="contain">
+      <div class="child2" style="flex-grow:0;"></div>
+      <div class="child2" style="flex-grow:0;"></div>
+      <div class="child2" style="flex-grow:1;"></div>
+    </div>
+    10.子集：flex-grow:1;自适应宽度，满屏显示
+    <div class="contain contain10">
+      <div class="child2" style="flex-grow:0;"></div>
+      <div class="child2" style="flex-grow:0;"></div>
+      <div class="child2" style="flex-grow:1;"></div>
+    </div>
+    11.子集：flex-grow:1;自适应宽度，满屏显示,
+    <!-- <div class="contain11">
+      <div class="child3 color" style="flex-grow:0;flex-shrink:1;"></div>
+      <div class="child4 color" style="flex-grow:0;"></div>
+      <div class="child5 color" style="flex-grow:1;"></div>
+    </div> -->
+
+
+  </body>
+</html>
