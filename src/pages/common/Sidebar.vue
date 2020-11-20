@@ -4,7 +4,7 @@
         <el-menu :default-active="onRoutes" unique-opened class="el-menu-vertical-demo"
          background-color="#324157" text-color="#bfcbd9" @open="handleOpen" @close="handleClose" :collapse="storeLeftMenu" hide-timeout >
             
-          <template v-for="(item1, key) in jsonJs.Menu">
+          <template v-for="(item1, key) in utils.Menu">
             <el-menu-item :index="returnRouter(item1.path)"  :key="key"  v-if="!item1.childMenu.length"  @click="$router.push(item1.path)">
               <i :class="item1.icon"></i>
               <span slot="title">{{item1.title}}</span>
@@ -60,7 +60,7 @@ export default {
     };
   },
   created: function() {
-    console.log(this.jsonJs,"jsonJsjsonJsjsonJsjsonJsjsonJs")
+    console.log(this.utils,"utilsutilsutilsutilsutils")
     let that = this;
     //resize控制菜单的高度，从而出现滚动条
     this.windowHeight = document.getElementsByTagName("body").height; //$("body").height();

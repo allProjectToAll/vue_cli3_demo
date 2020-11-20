@@ -1,5 +1,5 @@
 
-import api from '@/libs/api'
+import api from './api'
 export default {
     // 登录
     login (data) {

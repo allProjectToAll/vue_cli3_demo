@@ -1,5 +1,7 @@
+import { Decimal } from 'decimal.js'
+let util = {};
 // 菜单
-const Menu = [
+util.Menu = [
     {
         title:"首页",
         icon:"el-icon-s-home",
@@ -203,12 +205,12 @@ const Menu = [
 
 //正则验证是否为数字，或小数
 //val是判断的数字，num是判断最多有多少位小数
-// util.toValidate(12.23,2) =》true  
+// .toValidate(12.23,2) =》true  
 // num为空表示为数字(小数或整数)
 // num为0表示为整数
 // num为1表示一位小数
 // .......
-function valiNum(value,num){
+util.valiNum=(value,num)=>{
     let val = value+"";
     let valPoint = val.substr(val.length-1,1);
     if(valPoint == "."){
@@ -245,7 +247,73 @@ function valiNum(value,num){
     // }
 }
 
-export default {
-    valiNum,
-    Menu
+
+//数字截取成多少个小数点
+//d是要截取的数字，s是截取多少位=》util.toFixed(12.25678,3)=>12.256
+util.toFixed = (d,s=0) => {
+    if(!d && d!==0){
+      return 0;
+    }
+    // 不要超过 16 位
+    if (s === 0)
+      return Math.floor(d);
+    let str = util.scientificToNumber(d).toString();
+    let index = str.indexOf('.');
+    if(index !== -1){
+      let num = str.length-index-1; //原有小数位数
+      if(num<s){
+        str = `${str}${'0'.repeat(s-num)}`
+      }else{
+        str = str.slice(0,index+1+s);
+      }
+    }else{
+      str = `${str}.${'0'.repeat(s)}`
+    }
+    return str
 }
+
+util.scientificToNumber = (value) => {
+if(!value && value !==0 ){
+    return;
+}
+// e-7 e+21
+let str = value.toString();
+let eIndex = str.indexOf('e');
+if(eIndex<0){
+    return value;
+}
+let sign = str.substr(eIndex+1,1);
+let powNum = str.slice(eIndex+2);
+let arr = [];
+if(sign === '-'){
+    powNum = powNum - 6;
+    arr = new Decimal(value).mul(Math.pow(10,powNum)).toString().split('');
+    let dotIndex = arr.indexOf('.');
+    arr.splice(dotIndex+1,0,'0'.repeat(powNum));
+}else{
+    powNum = powNum - 20;
+    arr = new Decimal(value).div(Math.pow(10,powNum)).toString().split('');
+    let dotIndex = arr.indexOf('.');
+    if(dotIndex === -1){
+    arr.push('0'.repeat(powNum));
+    }else{
+    let dotNum = arr.length - dotIndex -1; // 小数位数
+    arr.splice(dotIndex,1); //去掉小数点
+    let diff = dotNum - powNum;
+    if(diff <= 0){
+        arr.splice(arr.length-1,0,'0'.repeat(diff)) // 补齐 0
+    }else{
+        arr.splice(arr.length-1-diff,0,'.') // 加上小数点
+    }
+    }
+}
+return arr.join('');
+}
+
+
+export default util;
+
+// export default {
+//     valiNum,
+//     Menu
+// }

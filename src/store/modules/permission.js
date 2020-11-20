@@ -1,6 +1,5 @@
 import { fetchPermission } from '@/api/permission' //获取所有的权限
 import router, { DynamicRoutes } from '@/router/index'
-// import { recursionRouter } from '@/utils/recursion-router'
 // import dynamicRouter from '@/router/dynamic-router'
 
 export default {

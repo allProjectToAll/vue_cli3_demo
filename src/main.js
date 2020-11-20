@@ -11,13 +11,13 @@ import './assets/css/index.css'
 // import * as globalFilter from './filters/filters'
 // import '@/icons'
 
+// import { Decimal } from 'decimal.js'
+
 /////////////////////////////////
 //多语言
 import i18n from './i18n/i18n';
-// import api from '@/libs/api'
-// Vue.prototype.api = api;
-import jsonJs from '@/libs/json'
-Vue.prototype.jsonJs = jsonJs;
+import utils from '@/libs/utils'
+Vue.prototype.utils = utils;
 //滚动轴
 // import EasyScroll from "easyscroll";
 //echarts

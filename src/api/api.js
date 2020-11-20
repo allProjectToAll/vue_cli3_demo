@@ -1,5 +1,5 @@
 
-import Util from './util'
+import Api from './network'
 
 function constructUrl(params=''){
   if (typeof(params) != 'object') {
@@ -31,11 +31,11 @@ function deconstructUrl(url='') {
 export default  {
   get(url,params) {
     // http get
-    return Util.ajax.get(`${url}${constructUrl(params)}`)
+    return Api.ajax.get(`${url}${constructUrl(params)}`)
   },
   post(url,data={}) {
     // http post
-    return Util.ajax.post(url, data);
+    return Api.ajax.post(url, data);
   },
   getLocationSearch() {
     if(!window.location.search){
@@ -48,6 +48,6 @@ export default  {
       constructUrl(filter));
   },
   getBaseUrl(){
-    return Util.ajax.defaults
+    return Api.ajax.defaults
   }
 }
