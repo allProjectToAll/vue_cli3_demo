@@ -10,6 +10,9 @@ export default {
     mounted(){
       console.log(this.utils.toFixed(12.9999423424,2),"9999999")
     },
+    methods:{
+      
+    }
 }
 </script>
 
